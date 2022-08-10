@@ -32,6 +32,21 @@ class App extends Component{
             }
         })
     }
+    //Добавление новых пользователей пока с пустыми значениями в цене
+    addItem = (name, salary) => {
+        const newItem = {
+            name, 
+            salary,
+            increase: false,
+            id: this.maxId++
+        }
+        this.setState(({data}) => {
+            const newArr = [...data, newItem];
+            return {
+                data: newArr
+            }
+        });
+    }
     render(){
        
         return(
@@ -45,7 +60,7 @@ class App extends Component{
                 <EmployersList 
                 data={this.state.data}
                 onDelete={this.deleteItem}/>
-                <EmployersAddForm/>
+                 <EmployersAddForm onAdd={this.addItem}/>
             </div>
         );
     }
