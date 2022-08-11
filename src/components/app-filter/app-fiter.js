@@ -3,18 +3,20 @@ import './app-fiter.css';
 
 const AppFilter=(props)=>{
     const buttonsData=[
-        {  name:'all',label:'Все сотрудники'},        
-        { name:'rise',label:'Повышение'},        
-        { name:'moreThen1000', label:' З/п больше 1000$'},
+        {  name:'all',label:'Все сотрудники',colored:false},        
+        { name:'rise',label:'Повышение',colored:false},        
+        { name:'moreThen1000', label:' З/п больше 1000$',colored:true}
     ];
-    const buttons =buttonsData.map(({name,label})=>{
+    const buttons =buttonsData.map(({name,label,colored})=>{
         const active=props.filter===name;
         const clazz=active ? 'btn-light':'btn-outline-light';
+        const style=colored ? {color:'red'}:null
         return (
             <button type="button" 
             className={`btn ${clazz}`}
             key={name}
-            onClick={()=>props.onFilterSelect(name)}>
+            onClick={()=>props.onFilterSelect(name)}
+            style={style}>
                 {label}
             </button>
         )
