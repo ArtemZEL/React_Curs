@@ -66,6 +66,4 @@ class EmployersAddForm extends Component{
 }
 EmployersAddForm.onLog();
 console.log(EmployersAddForm.logged);
-
-
 export default EmployersAddForm;
